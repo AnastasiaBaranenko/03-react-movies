@@ -14,9 +14,10 @@ export default function App(){
   const [movies, setMovies] = useState<Movie[]>([]);
 const [isLoading, setIsLoading] = useState(false);
 const [isError, setIsError] = useState(false);
-const [selectedModal, setselectedModal] = useState<Movie | null>(null);
+const [selectedMovie, setselectedMovie] = useState<Movie | null>(null);
 
 const handleSearch = async (queryValue: string) => {
+   setMovies([]);
   setIsLoading(true)
  setIsError(false);
   try{
@@ -33,7 +34,7 @@ const handleSearch = async (queryValue: string) => {
 }
 
 const handleMovie = (movie:Movie) => {
-  setselectedModal(movie);
+  setselectedMovie(movie);
 }
 
 return (
@@ -42,7 +43,6 @@ return (
   position="top-center"
   reverseOrder={false}
   />
-    {/* if(data.length = 0){('toast.errorNo movies found for your request.')} */}
     <SearchBar onSubmit={handleSearch}/>
     {isLoading && <Loader/>}
     {isError && <ErrorMessage/>}
@@ -50,7 +50,7 @@ return (
     <MovieGrid movies={movies} onSelect={handleMovie}
     />
 }
-        {selectedModal && <MovieModal movie={selectedModal} onClose={() => setselectedModal(null)} />} 
+        {selectedMovie && <MovieModal movie={selectedMovie} onClose={() => setselectedMovie(null)} />} 
 </div>
 )
 }
