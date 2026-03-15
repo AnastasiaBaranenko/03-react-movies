@@ -14,7 +14,7 @@ export default function App(){
   const [movies, setMovies] = useState<Movie[]>([]);
 const [isLoading, setIsLoading] = useState(false);
 const [isError, setIsError] = useState(false);
-const [selectedMovie, setselectedMovie] = useState<Movie | null>(null);
+const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
 
 const handleSearch = async (queryValue: string) => {
    setMovies([]);
@@ -34,7 +34,7 @@ const handleSearch = async (queryValue: string) => {
 }
 
 const handleMovie = (movie:Movie) => {
-  setselectedMovie(movie);
+  setSelectedMovie(movie);
 }
 
 return (
@@ -50,7 +50,7 @@ return (
     <MovieGrid movies={movies} onSelect={handleMovie}
     />
 }
-        {selectedMovie && <MovieModal movie={selectedMovie} onClose={() => setselectedMovie(null)} />} 
+        {selectedMovie && <MovieModal movie={selectedMovie} onClose={() => setSelectedMovie(null)} />} 
 </div>
 )
 }
