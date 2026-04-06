@@ -6,11 +6,11 @@ export interface Movies{
 }
 
 const myKey = import.meta.env.VITE_TMDB_TOKEN;
+const url = import.meta.env.VITE_BASE_URL;
 export async function fetchMovies(searchFilm: string): Promise<Movie[]>{
             try{
-   const response = await axios.get<Movies>('https://api.themoviedb.org/3/search/movie',{
+   const response = await axios.get<Movies>(`${url}/movie`,{
   params: {
-    // твої параметри
     query: searchFilm,
   },
   headers: {
